@@ -20,26 +20,51 @@ const { NotImplementedError } = require('../extensions/index.js');
  *   this.next = null;
  * }
  */
+/*
+function ListNode(x) {
+	this.value = x;
+	this.next = null;
+}*/
 
 module.exports = function removeKFromList( l, k ) {
-		throw new NotImplementedError('Not implemented');
+	//	throw new NotImplementedError('Not implemented');
 	//	let out = [];
-/*	let out = null;
-//	if( l.lenght > 0 ){
-		let cur = null;
-	for( let i = 0; i < l.lenght; i++ ){
-		if( l[i] !== k ){
-			if( out === null ){
-				out = new ListNode( l[i] );
-				cur = out;
+	let out = null;
+	//	console.debug("==== "+JSON.stringify(l)+" " );
+
+	let cur = l;
+	let to_out = null;
+	let chk = true;
+	let i = 0;
+	while( chk ){
+		if( cur.value != k ){
+			to_out = {
+				value: cur.value,
+				next: null
+			};
+		//	console.debug("==== "+JSON.stringify( to_out )+" " );
+			if( out == null ){
+				out = to_out;
 			}else{
-				let next = new ListNode( l[i] );
-				cur.next = next;
-				cur = next;
+				let zz = out;
+				while( zz.next != null ){
+					zz = zz.next;
+				}
+				zz.next = to_out;
+			//	console.debug("==== "+JSON.stringify( out )+" " );
 			}
+		//	console.debug(">>> "+cur.value );
 		}
+
+		if( cur.next == null ){
+			chk = false;
+		}else{
+			cur = cur.next;
+		}
+
 	}
-//	}
+
+	//	console.debug("====	====	==== "+JSON.stringify( out )+" " );
 		return out;
-*/
 }
+
